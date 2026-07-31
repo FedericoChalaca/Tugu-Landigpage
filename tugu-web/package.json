@@ -1,0 +1,13 @@
+{
+  "name": "tugu-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup:image-tools": "npm install --save-dev sharp",
+    "optimize:image": "node scripts/optimize-images.mjs",
+    "optimize:all": "npm run setup:image-tools && npm run optimize:image"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

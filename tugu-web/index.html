@@ -7,21 +7,59 @@
 <meta name="description" content="Tugu: datáfonos con lector de huella digital. Paga con un toque, sin tarjetas, sin efectivo, sin celular.">
 <link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@600&display=swap"></noscript>
+<link rel="preload" as="image" href="assets/datafono-716.avif" imagesrcset="assets/datafono-420.avif 420w, assets/datafono-716.avif 716w" imagesizes="(max-width: 819px) 92vw, 403px" type="image/avif">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
 :root{--bg:#f7f8fa;--text:#1b2148;--acc:#279450;--acc7:#1e7440;--acc3:#a3d9b9;--acc1:#e9f6ee;--div:#e2e6ee;--n9:#1b2148;--n3:#c9d0dd;--fh:'Poppins',system-ui,sans-serif;--fb:'Plus Jakarta Sans',system-ui,sans-serif}
 html{scroll-behavior:smooth;overflow-x:clip}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--fb);font-size:15px;line-height:1.55;text-wrap:pretty}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--fb);font-size:15px;line-height:1.55;text-wrap:pretty;overflow-x:hidden}
 a{color:var(--text);text-decoration:none}a:hover{color:var(--acc)}
 img{display:block;max-width:100%}
 h1,h2,h3{font-family:var(--fh);letter-spacing:-0.015em;margin:0}
 :focus{outline:none}:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 ::selection{background:rgba(39,148,80,.28)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media (min-width:820px){
+  .hero-layout{display:grid !important;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:0 80px;align-items:end}
+  .product-layout{display:grid !important;grid-template-columns:minmax(0,1.06fr) minmax(340px,420px) minmax(0,1.06fr);gap:0 clamp(24px,2.5vw,48px);align-items:start}
+  .product-center{grid-column:2;grid-row:1}
+  .product-sticky{position:sticky}
+  .product-layout [data-device-float]{max-width:420px;margin:0 auto}
+  .product-left,.product-right{display:flex !important;flex-direction:column}
+  .product-left{grid-column:1;grid-row:1}
+  .product-right{grid-column:3;grid-row:1}
+  .product-left{padding-top:12px}
+  .product-right{padding-top:56px}
+  .security-grid{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+  .about-grid{display:grid !important;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px clamp(32px,5vw,80px);align-items:start}
+  .steps-grid,.function-grid{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px clamp(24px,3vw,48px)}
+  .app-grid{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;align-items:center}
+  .areas-grid{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+}
+@media (max-width:819px){
+  .wrap{padding-left:16px;padding-right:16px}
+  h1,h2,.step .n{margin-left:0 !important}
+  .nav{padding-left:14px;padding-right:14px;gap:10px;flex-wrap:wrap}
+  .nav .brand{margin-right:auto;flex:1 1 auto}
+  .nav .btn{min-width:0;white-space:nowrap}
+  .nav > a.hidden.md\:inline{display:none !important}
+  .hero-layout,.security-grid,.about-grid,.steps-grid,.function-grid,.app-grid,.areas-grid{display:block !important}
+  .product-layout{display:flex !important;flex-direction:column}
+  .product-left,.product-right{display:contents !important;padding-top:0 !important}
+  .product-center{order:1}
+  .feature-01{order:2}.feature-02{order:3}.feature-03{order:4}.feature-04{order:5}.feature-05{order:6}.feature-06{order:7}
+  .product-right{margin-top:28px}
+  .security-grid > *, .steps-grid > *, .function-grid > *, .areas-grid > *, .app-grid > *, .about-grid > *{margin-bottom:18px}
+  section{overflow-x:hidden}
+  hr.sep{max-width:100vw}
+}
 @keyframes tuguPulse{0%{transform:scale(.65);opacity:.9}100%{transform:scale(1.7);opacity:0}}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;font-family:var(--fh);font-weight:700;font-size:14px;line-height:1.2;padding:11px 20px;border-radius:14px}
+.btn[aria-disabled="true"]{opacity:.68;pointer-events:none}
 .btn-primary{background:var(--acc);color:#fff}.btn-primary:hover{background:var(--acc7);color:#fff}
 .btn-ghost{color:var(--acc);padding-inline:8px}.btn-ghost:hover{background:color-mix(in srgb,var(--acc) 10%,transparent)}
 .nav{display:flex;align-items:center;gap:16px;padding:12px 16px;border-bottom:1px solid var(--div)}
@@ -33,22 +71,22 @@ h1,h2,h3{font-family:var(--fh);letter-spacing:-0.015em;margin:0}
 .gcard{background:color-mix(in srgb,#fff 52%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid color-mix(in srgb,#fff 75%,transparent);box-shadow:0 1px 2px rgba(27,33,72,.14);border-radius:18px;padding:26px;transition:transform .35s ease,box-shadow .35s ease,background .35s ease,border-color .35s ease}
 .gcard:hover{background:color-mix(in srgb,#fff 78%,transparent);border-color:var(--acc);box-shadow:0 12px 36px color-mix(in srgb,var(--acc) 22%,transparent);transform:translateY(-6px)}
 .gcard h3{font-weight:600;font-size:21px;line-height:26px;margin:10px 0 0}
-.gcard p{font-size:15px;line-height:26px;margin:12px 0 0;color:color-mix(in srgb,var(--text) 78%,transparent)}
+.gcard p{font-size:15px;line-height:26px;margin:12px 0 0;color:color-mix(in srgb,var(--text) 88%,transparent)}
 .gcard .num{font-family:var(--fh);font-weight:800;font-size:14px;color:var(--acc)}
 .dcard{background:rgba(255,255,255,.07);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:26px;transition:transform .35s ease,box-shadow .35s ease,background .35s ease,border-color .35s ease}
 .dcard:hover{background:rgba(255,255,255,.14);border-color:var(--acc);box-shadow:0 12px 36px color-mix(in srgb,var(--acc) 35%,transparent);transform:translateY(-6px)}
 .dcard h3{font-family:var(--fh);font-weight:600;font-size:20px;margin:0 0 10px}
-.dcard p{font-size:15px;line-height:26px;margin:0;color:var(--n3)}
+.dcard p{font-size:15px;line-height:26px;margin:0;color:#e4e8f1}
 .acard{background:#fff;border:1px solid var(--div);border-radius:18px;padding:26px;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
 .acard:hover{border-color:var(--acc);box-shadow:0 12px 32px color-mix(in srgb,var(--acc) 16%,transparent);transform:translateY(-6px)}
 .acard .ic{display:flex;width:48px;height:48px;border-radius:14px;background:var(--acc1);color:var(--acc7);align-items:center;justify-content:center;margin-bottom:18px}
 .acard h3{font-weight:600;font-size:19px;margin:0 0 8px}
-.acard p{font-size:14.5px;line-height:24px;margin:0;color:color-mix(in srgb,var(--text) 75%,transparent)}
+.acard p{font-size:14.5px;line-height:24px;margin:0;color:color-mix(in srgb,var(--text) 86%,transparent)}
 .step{border-top:1px solid var(--div);padding-top:20px;transition:border-color .35s ease,transform .35s ease}
 .step:hover{border-color:var(--acc);transform:translateY(-4px)}
 .step .n{font-family:var(--fh);font-weight:800;font-size:clamp(40px,4vw,56px);color:var(--acc);margin:0 0 12px -0.045em}
 .step h3{font-weight:600;font-size:20px;margin:0 0 10px}
-.step p{font-size:15px;line-height:26px;margin:0;color:color-mix(in srgb,var(--text) 78%,transparent)}
+.step p{font-size:15px;line-height:26px;margin:0;color:color-mix(in srgb,var(--text) 88%,transparent)}
 .blob{position:absolute;border-radius:50%;pointer-events:none}
 .soc{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .25s ease}
 .soc:hover{background:rgba(255,255,255,.16);color:#fff}
@@ -60,8 +98,8 @@ hr.sep{height:1px;border:0;max-width:1560px;margin:0 auto;background:var(--div)}
 </style>
 </head>
 <body>
-<nav class="nav" style="position:sticky;top:0;z-index:50;background:var(--bg);">
-  <span class="brand"><img src="logo.png" alt="TUGU" style="height:32px;width:auto;"></span>
+<nav class="nav" aria-label="Navegación principal" style="position:sticky;top:0;z-index:50;background:var(--bg);">
+  <span class="brand"><img src="logo.png" alt="TUGU" width="274" height="72" loading="eager" decoding="async" style="height:32px;width:auto;"></span>
   <a href="#producto" class="hidden md:inline">Producto</a>
   <a href="#seguridad" class="hidden md:inline">Seguridad</a>
   <a href="#nosotros" class="hidden md:inline">Nosotros</a>
@@ -70,8 +108,9 @@ hr.sep{height:1px;border:0;max-width:1560px;margin:0 auto;background:var(--div)}
   <a href="#contacto" class="btn btn-primary">Solicitar demo</a>
 </nav>
 
+  <main id="contenido">
 <section data-hero class="wrap" style="padding-top:clamp(36px,6vh,72px);padding-bottom:clamp(20px,3vh,36px);">
-  <div data-hero-copy class="lg:grid lg:grid-cols-2 lg:gap-x-20" style="align-items:end;">
+  <div data-hero-copy class="hero-layout lg:grid lg:grid-cols-2 lg:gap-x-20" style="align-items:end;">
     <h1 style="font-weight:800;font-size:clamp(40px,4.4vw,68px);line-height:1.06;letter-spacing:-0.02em;margin-left:-0.058em;">
       <span data-hero-line style="display:block;">Tu huella</span>
       <span data-hero-line style="display:block;">es tu tarjeta.</span>
@@ -87,33 +126,38 @@ hr.sep{height:1px;border:0;max-width:1560px;margin:0 auto;background:var(--div)}
   </div>
 </section>
 
-<section id="producto" data-band class="wrap" style="position:relative;padding-top:clamp(16px,3vh,40px);padding-bottom:64px;">
+<section id="producto" data-band class="wrap" style="position:relative;padding-top:clamp(24px,4vh,56px);padding-bottom:64px;">
   <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;">
     <span class="blob" style="left:-6%;top:12%;width:340px;height:340px;background:color-mix(in srgb,#FE9102 13%,transparent);"></span>
     <span class="blob" style="right:-4%;top:48%;width:280px;height:280px;background:color-mix(in srgb,#36C6EC 16%,transparent);"></span>
     <span class="blob" style="left:38%;bottom:4%;width:220px;height:220px;background:color-mix(in srgb,#FB2DA4 8%,transparent);"></span>
   </div>
-  <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,480px)_minmax(0,1fr)] lg:gap-x-10" style="position:relative;">
-    <div class="lg:col-start-2 lg:row-start-1" style="position:relative;">
-      <div class="lg:sticky" style="top:130px;padding:8px 0 40px;">
+  <h2 class="sr-only">Producto Tugu</h2>
+  <div class="product-layout" style="position:relative;">
+    <div class="product-center" style="position:relative;">
+      <div class="product-sticky" style="top:130px;padding:8px 0 40px;">
         <div data-device-float style="perspective:1200px;">
           <div data-device style="position:relative;transform-style:preserve-3d;will-change:transform;">
-            <img src="datafono.png" alt="Datáfono Tugu con lector de huella digital" style="width:100%;height:auto;filter:drop-shadow(0 26px 34px rgba(27,33,72,.28));">
+            <picture>
+              <source type="image/avif" srcset="assets/datafono-420.avif 420w, assets/datafono-716.avif 716w" sizes="(max-width: 819px) 92vw, 403px">
+              <source type="image/webp" srcset="assets/datafono-420.webp 420w, assets/datafono-716.webp 716w" sizes="(max-width: 819px) 92vw, 403px">
+              <img src="datafono.png" alt="Datáfono Tugu con lector de huella digital" width="716" height="702" loading="eager" fetchpriority="high" decoding="async" style="width:100%;height:auto;filter:drop-shadow(0 26px 34px rgba(27,33,72,.28));">
+            </picture>
             <span style="position:absolute;left:16%;top:5%;width:34px;height:34px;border-radius:50%;border:2px solid var(--acc);animation:tuguPulse 2.4s ease-out infinite;pointer-events:none;"></span>
             <span style="position:absolute;left:16%;top:5%;width:34px;height:34px;border-radius:50%;border:2px solid var(--acc);animation:tuguPulse 2.4s ease-out 1.2s infinite;pointer-events:none;"></span>
           </div>
         </div>
       </div>
     </div>
-    <div class="lg:col-start-1 lg:row-start-1" style="display:flex;flex-direction:column;gap:28px;padding-top:24px;">
-      <div data-reveal="left" class="gcard"><span class="num">01</span><h3>Sensor biométrico certificado</h3><p>Módulo de huella FBI/STQC con detección de dedo vivo: distingue una huella real de una copia o un molde. Verifica en menos de un segundo.</p></div>
-      <div data-reveal="left" class="gcard"><span class="num">03</span><h3>Impresora térmica de 58 mm</h3><p>Comprobante físico de alta velocidad integrado en el equipo — además del recibo digital por SMS o correo.</p></div>
-      <div data-reveal="left" class="gcard"><span class="num">05</span><h3>Tokenización irreversible</h3><p>Tu huella nunca se guarda como imagen: se convierte en un token cifrado. Ni Tugu, ni el banco, ni el comercio pueden reconstruirla.</p></div>
+    <div class="product-left" style="display:flex;flex-direction:column;gap:28px;padding-top:24px;">
+      <div data-reveal="left" class="gcard feature-01"><span class="num">01</span><h3>Sensor biométrico certificado</h3><p>Módulo de huella FBI/STQC con detección de dedo vivo: distingue una huella real de una copia o un molde. Verifica en menos de un segundo.</p></div>
+      <div data-reveal="left" class="gcard feature-03"><span class="num">03</span><h3>Impresora térmica de 58 mm</h3><p>Comprobante físico de alta velocidad integrado en el equipo — además del recibo digital por SMS o correo.</p></div>
+      <div data-reveal="left" class="gcard feature-05"><span class="num">05</span><h3>Tokenización irreversible</h3><p>Tu huella nunca se guarda como imagen: se convierte en un token cifrado. Ni Tugu, ni el banco, ni el comercio pueden reconstruirla.</p></div>
     </div>
-    <div class="lg:col-start-3 lg:row-start-1" style="display:flex;flex-direction:column;gap:28px;padding-top:96px;">
-      <div data-reveal="right" class="gcard"><span class="num">02</span><h3>Pantalla táctil de 5.5"</h3><p>Guía la venta paso a paso, legible a plena luz del día. Cualquier comercio lo opera desde el primer día, sin capacitación.</p></div>
-      <div data-reveal="right" class="gcard"><span class="num">04</span><h3>Todos los medios de pago</h3><p>Además de la huella: chip EMV, banda magnética certificada PCI y contactless 13.56 MHz tipo A/B. Un solo equipo para todo.</p></div>
-      <div data-reveal="right" class="gcard"><span class="num">06</span><h3>Conectividad total</h3><p>4G LTE, WiFi y Bluetooth con conmutación automática: si se cae la red, la venta no. Batería de 12 horas y carga USB-C.</p></div>
+    <div class="product-right" style="display:flex;flex-direction:column;gap:28px;padding-top:96px;">
+      <div data-reveal="right" class="gcard feature-02"><span class="num">02</span><h3>Pantalla táctil de 5.5"</h3><p>Guía la venta paso a paso, legible a plena luz del día. Cualquier comercio lo opera desde el primer día, sin capacitación.</p></div>
+      <div data-reveal="right" class="gcard feature-04"><span class="num">04</span><h3>Todos los medios de pago</h3><p>Además de la huella: chip EMV, banda magnética certificada PCI y contactless 13.56 MHz tipo A/B. Un solo equipo para todo.</p></div>
+      <div data-reveal="right" class="gcard feature-06"><span class="num">06</span><h3>Conectividad total</h3><p>4G LTE, WiFi y Bluetooth con conmutación automática: si se cae la red, la venta no. Batería de 12 horas y carga USB-C.</p></div>
     </div>
   </div>
 </section>
@@ -124,7 +168,7 @@ hr.sep{height:1px;border:0;max-width:1560px;margin:0 auto;background:var(--div)}
   <div class="wrap" style="position:relative;padding-top:90px;padding-bottom:90px;">
     <span class="lbl" style="color:var(--acc3);">Seguridad y transacciones</span>
     <h2 data-reveal="left" class="h2" style="max-width:22ch;">Tu huella funciona como una tarjeta débito o crédito. Pero mejor.</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3" style="gap:24px;">
+    <div class="security-grid grid sm:grid-cols-2 lg:grid-cols-3" style="gap:24px;">
       <div data-reveal="left" class="dcard"><span class="dot"></span><h3>Imposible de perder</h3><p>Una tarjeta se olvida, se pierde o se vence. Tu huella llega contigo a todas partes, todos los días, sin cuota de reposición.</p></div>
       <div data-reveal="up" class="dcard"><span class="dot"></span><h3>Imposible de clonar</h3><p>No hay banda que copiar ni número que robar. El token cifrado de cada pago es de un solo uso: interceptado, no sirve para nada.</p></div>
       <div data-reveal="right" class="dcard"><span class="dot"></span><h3>Nadie paga por ti</h3><p>Cada transacción exige tu presencia física. Sin tu dedo sobre el sensor no hay pago — ni con tu tarjeta robada, ni con tu clave filtrada.</p></div>
@@ -137,7 +181,7 @@ hr.sep{height:1px;border:0;max-width:1560px;margin:0 auto;background:var(--div)}
 
 <section id="nosotros" class="wrap" style="padding-top:90px;padding-bottom:70px;">
   <span class="lbl">Sobre Tugu</span>
-  <div class="grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]" style="gap:40px clamp(32px,5vw,80px);align-items:start;">
+  <div class="about-grid grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]" style="gap:40px clamp(32px,5vw,80px);align-items:start;">
     <div>
       <h2 data-reveal="left" class="h2" style="margin-bottom:0;max-width:20ch;">La fintech que cambia el gesto de pagar.</h2>
       <p data-reveal="left" style="font-size:16px;line-height:28px;margin:26px 0 0;color:color-mix(in srgb,var(--text) 82%,transparent);max-width:56ch;">Tugu es una fintech del sector de las pasarelas de pago. Transformamos la manera en la que se procesan los pagos — más rápidos, fáciles y seguros — por medio de biometría: guardamos tus tarjetas en nuestra aplicación y te habilitamos para pagar en establecimientos comerciales únicamente con tu huella digital, dejando de lado los elementos físicos: tarjetas débito o crédito, dinero en efectivo o el celular para leer un QR.</p>
@@ -149,7 +193,7 @@ hr.sep{height:1px;border:0;max-width:1560px;margin:0 auto;background:var(--div)}
       <p style="font-size:15px;line-height:26px;margin:18px 0 0;color:color-mix(in srgb,var(--text) 78%,transparent);">El mercado de pagos digitales crece de forma exponencial en Colombia: cada vez menos efectivo, cada vez más tarjetas. Tugu es el siguiente paso de esa tendencia.</p>
     </div>
   </div>
-  <div class="grid md:grid-cols-3" style="gap:28px;margin-top:56px;">
+  <div class="steps-grid grid md:grid-cols-3" style="gap:28px;margin-top:56px;">
     <div data-reveal="left" class="step"><span class="dot" style="margin-bottom:14px;"></span><h3>App Tugu Personas</h3><p>Guarda tus tarjetas y lleva el registro de cada transacción hecha con tu huella.</p></div>
     <div data-reveal="up" class="step"><span class="dot" style="margin-bottom:14px;"></span><h3>Tugu Comercios</h3><p>La app de los establecimientos comerciales: ventas y gestión de su dinero en tiempo real.</p></div>
     <div data-reveal="right" class="step"><span class="dot" style="margin-bottom:14px;"></span><h3>Software del datáfono</h3><p>Capta la huella y conecta toda nuestra tecnología en el punto de venta.</p></div>
@@ -161,7 +205,7 @@ hr.sep{height:1px;border:0;max-width:1560px;margin:0 auto;background:var(--div)}
 <section id="como-funciona" class="wrap" style="padding-top:90px;padding-bottom:90px;">
   <span class="lbl">Cómo funciona</span>
   <h2 data-reveal="left" class="h2">Tres pasos. El primero, una sola vez.</h2>
-  <div class="grid md:grid-cols-3" style="gap:40px clamp(24px,3vw,48px);">
+  <div class="function-grid grid md:grid-cols-3" style="gap:40px clamp(24px,3vw,48px);">
     <div data-reveal="left" class="step"><p class="n">1</p><h3>Regístrate una vez</h3><p>En cualquier punto Tugu: documento de identidad, huella sobre el sensor y la cuenta o tarjeta que quieras vincular. Dos minutos.</p></div>
     <div data-reveal="up" class="step"><p class="n">2</p><h3>Paga con un toque</h3><p>En cualquier comercio con datáfono Tugu: el vendedor digita el monto, tú pones el dedo. Sin billetera, sin celular, sin PIN.</p></div>
     <div data-reveal="right" class="step"><p class="n">3</p><h3>Confirmación al instante</h3><p>Comprobante impreso al momento y recibo digital por SMS o correo, con el movimiento en la app de tu banco.</p></div>
@@ -171,14 +215,14 @@ hr.sep{height:1px;border:0;max-width:1560px;margin:0 auto;background:var(--div)}
 <hr class="sep">
 
 <section id="app" class="wrap" style="padding-top:84px;padding-bottom:84px;">
-  <div class="grid lg:grid-cols-2" style="gap:56px;align-items:center;">
+  <div class="app-grid grid lg:grid-cols-2" style="gap:56px;align-items:center;">
     <div>
       <span class="lbl">La app Tugu</span>
       <h2 data-reveal="left" class="h2" style="margin-bottom:0;max-width:18ch;">Tu cuenta, en la palma de la otra mano.</h2>
       <p data-reveal="left" style="font-size:16px;line-height:28px;margin:24px 0 0;color:color-mix(in srgb,var(--text) 78%,transparent);max-width:50ch;">Consulta tu saldo, revisa cada pago hecho con tu huella, gestiona límites y recibe alertas en tiempo real. La app es opcional: para pagar solo necesitas tu dedo.</p>
       <div data-reveal="left" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;">
-        <a href="#" class="btn btn-primary">App Store — iPhone</a>
-        <a href="#" class="btn btn-ghost">Google Play — Android</a>
+        <span class="btn btn-primary" aria-disabled="true">Próximamente en App Store</span>
+        <span class="btn btn-ghost" aria-disabled="true">Próximamente en Google Play</span>
       </div>
     </div>
     <div data-reveal="right" style="position:relative;">
@@ -227,7 +271,7 @@ hr.sep{height:1px;border:0;max-width:1560px;margin:0 auto;background:var(--div)}
   <div class="wrap" style="padding-top:84px;padding-bottom:84px;">
     <span class="lbl">Áreas de aplicación</span>
     <h2 data-reveal="left" class="h2">Un mismo datáfono, muchos usos.</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4" style="gap:24px;">
+    <div class="areas-grid grid sm:grid-cols-2 lg:grid-cols-4" style="gap:24px;">
       <div data-reveal="left" class="acard">
         <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21v-12l9-6 9 6v12"></path><path d="M9 21v-6h6v6"></path><path d="M3 21h18"></path></svg></span>
         <h3>Restaurantes escolares</h3><p>Cada estudiante reclama su almuerzo con la huella: sin fichas, sin listas en papel.</p>
@@ -272,8 +316,10 @@ hr.sep{height:1px;border:0;max-width:1560px;margin:0 auto;background:var(--div)}
   </div>
 </section>
 
+</main>
+
 <footer class="wrap" style="padding-top:48px;padding-bottom:48px;font-size:13px;line-height:22px;color:color-mix(in srgb,var(--text) 70%,transparent);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
-  <span style="display:flex;align-items:center;gap:14px;"><img src="logo.png" alt="TUGU" style="height:24px;width:auto;">© 2026 Tugu — Datáfonos biométricos</span>
+  <span style="display:flex;align-items:center;gap:14px;"><img src="logo.png" alt="TUGU" width="274" height="72" loading="lazy" decoding="async" style="height:24px;width:auto;">© 2026 Tugu — Datáfonos biométricos</span>
   <span style="display:flex;align-items:center;gap:14px;">
     <a href="https://www.facebook.com/tugucolombia" target="_blank" rel="noopener" aria-label="Facebook" style="color:inherit;display:flex;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
     <a href="https://www.instagram.com/tugucolombia" target="_blank" rel="noopener" aria-label="Instagram" style="color:inherit;display:flex;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
@@ -290,40 +336,58 @@ hr.sep{height:1px;border:0;max-width:1560px;margin:0 auto;background:var(--div)}
 window.addEventListener('load', function(){
   if(!(window.gsap&&window.ScrollTrigger))return;
   gsap.registerPlugin(ScrollTrigger);
-  gsap.from('[data-hero-line]',{opacity:0,y:46,duration:1,stagger:0.14,ease:'power3.out'});
-  gsap.from('[data-hero-sub]',{opacity:0,y:28,duration:0.9,delay:0.45,stagger:0.15,ease:'power3.out'});
-  gsap.from('[data-device]',{opacity:0,y:50,scale:0.94,duration:1.2,delay:0.25,ease:'power3.out'});
-  var yTo=gsap.quickTo('[data-device]','y',{duration:1.5,ease:'power3.out'});
-  var rTo=gsap.quickTo('[data-device]','rotation',{duration:1.1,ease:'power2.out'});
-  var sTo=gsap.quickTo('[data-device]','scale',{duration:1.5,ease:'power3.out'});
-  var settleT;
-  ScrollTrigger.create({trigger:'[data-band]',start:'top top',end:'bottom bottom',onUpdate:function(self){
-    var p=self.progress;
-    yTo(p*40);sTo(1+p*0.05);
-    var tilt=gsap.utils.clamp(-7,7,self.getVelocity()/260);
-    rTo(p*3-1+tilt);
-    clearTimeout(settleT);settleT=setTimeout(function(){rTo(p*3-1);},140);
-  }});
-  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
-    var wrap=document.querySelector('[data-device-float]');
-    var mx=gsap.quickTo('[data-device]','rotationY',{duration:0.7,ease:'power2.out'});
-    var my=gsap.quickTo('[data-device]','rotationX',{duration:0.7,ease:'power2.out'});
-    if(wrap){
-      wrap.addEventListener('mousemove',function(e){
-        var r=wrap.getBoundingClientRect();
-        mx(((e.clientX-r.left)/r.width-0.5)*22);
-        my(((e.clientY-r.top)/r.height-0.5)*-14);
-      });
-      wrap.addEventListener('mouseleave',function(){mx(0);my(0);});
+  function ensureHeroVisibleNearTop(){
+    if(window.scrollY<=48){gsap.set('[data-hero-copy]',{opacity:1,y:0});}
+  }
+  var isDesktop=window.matchMedia('(min-width:820px)').matches;
+  var prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  gsap.from('[data-hero-line]',{opacity:0,y:34,duration:0.72,stagger:0.11,ease:'power2.out'});
+  gsap.from('[data-hero-sub]',{opacity:0,y:18,duration:0.62,delay:0.26,stagger:0.12,ease:'power2.out'});
+  gsap.from('[data-device]',{opacity:0,y:34,scale:0.97,duration:0.82,delay:0.18,ease:'power2.out'});
+  if(isDesktop){
+    var yTo=gsap.quickTo('[data-device]','y',{duration:prefersReducedMotion?0.35:1.2,ease:'power3.out'});
+    var rTo=gsap.quickTo('[data-device]','rotation',{duration:0.95,ease:'power2.out'});
+    var sTo=gsap.quickTo('[data-device]','scale',{duration:1.2,ease:'power3.out'});
+    var settleT;
+    ScrollTrigger.create({trigger:'[data-band]',start:'top 85%',end:'bottom bottom',onUpdate:function(self){
+      var p=self.progress;
+      yTo(p*230);
+      if(prefersReducedMotion)return;
+      sTo(0.97+p*0.06);
+      var tilt=gsap.utils.clamp(-6,6,self.getVelocity()/260);
+      rTo(-2+p*7+tilt);
+      clearTimeout(settleT);settleT=setTimeout(function(){rTo(-2+p*7);},130);
+    }});
+    if(!prefersReducedMotion){
+      if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+        var wrap=document.querySelector('[data-device-float]');
+        var mx=gsap.quickTo('[data-device]','rotationY',{duration:0.66,ease:'power2.out'});
+        var my=gsap.quickTo('[data-device]','rotationX',{duration:0.66,ease:'power2.out'});
+        if(wrap){
+          wrap.addEventListener('mousemove',function(e){
+            var r=wrap.getBoundingClientRect();
+            mx(((e.clientX-r.left)/r.width-0.5)*20);
+            my(((e.clientY-r.top)/r.height-0.5)*-12);
+          });
+          wrap.addEventListener('mouseleave',function(){mx(0);my(0);});
+        }
+      }
+      gsap.to('[data-hero-copy]',{opacity:0,y:-56,ease:'none',scrollTrigger:{trigger:'[data-hero]',start:'top top',end:'bottom top',scrub:true,invalidateOnRefresh:true,onLeaveBack:function(){gsap.set('[data-hero-copy]',{opacity:1,y:0});}}});
+      gsap.to('[data-device-float]',{y:-10,duration:3,yoyo:true,repeat:-1,ease:'sine.inOut'});
     }
   }
-  gsap.to('[data-hero-copy]',{opacity:0,y:-60,ease:'none',scrollTrigger:{trigger:'[data-hero]',start:'bottom 55%',end:'bottom 12%',scrub:true}});
   document.querySelectorAll('[data-reveal]').forEach(function(el){
     var dir=el.getAttribute('data-reveal');
-    if(dir==='up'){gsap.from(el,{opacity:0,y:56,duration:0.95,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});}
-    else{gsap.from(el,{opacity:0,x:dir==='left'?-120:120,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 97%',end:'top 58%',scrub:0.6}});}
+    if(!isDesktop||prefersReducedMotion){
+      gsap.from(el,{opacity:0,y:30,duration:0.66,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 90%',once:true}});
+      return;
+    }
+    if(dir==='up'){gsap.from(el,{opacity:0,y:50,duration:0.9,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%'}});}
+    else{gsap.from(el,{opacity:0,x:dir==='left'?-100:100,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 95%',end:'top 60%',scrub:0.45}});}
   });
-  gsap.to('[data-device-float]',{y:-12,duration:2.8,yoyo:true,repeat:-1,ease:'sine.inOut'});
+  window.addEventListener('scroll',ensureHeroVisibleNearTop,{passive:true});
+  window.addEventListener('pageshow',ensureHeroVisibleNearTop);
+  setTimeout(ensureHeroVisibleNearTop,0);
   setTimeout(function(){ScrollTrigger.refresh();},900);
 });
 </script>
